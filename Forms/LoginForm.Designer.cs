@@ -43,8 +43,6 @@ partial class LoginForm
         lblLogin.Text = "Логин";
         lblPassword.Text = "Пароль";
 
-        txtLogin.PlaceholderText = "Email или телефон";
-        txtPassword.PlaceholderText = "Пароль";
         txtPassword.UseSystemPasswordChar = true;
 
         btnLogin.Text = "Войти";

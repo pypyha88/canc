@@ -39,10 +39,6 @@ partial class RegisterForm
         layout.RowCount = 10;
         layout.ColumnCount = 1;
 
-        txtFullName.PlaceholderText = "ФИО";
-        txtEmail.PlaceholderText = "Email";
-        txtPhone.PlaceholderText = "Телефон";
-        txtPassword.PlaceholderText = "Пароль";
         txtPassword.UseSystemPasswordChar = true;
 
         btnRegister.Text = "Создать аккаунт";

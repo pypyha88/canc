@@ -65,7 +65,6 @@ partial class MainForm
         tabCatalog.Text = "Каталог";
         tabProfile.Text = "Личный кабинет";
 
-        txtSearch.PlaceholderText = "Поиск";
         txtSearch.TextChanged += TxtSearch_TextChanged;
 
         cbSort.DropDownStyle = ComboBoxStyle.DropDownList;

@@ -51,7 +51,6 @@ partial class ProductEditForm
         layout.RowCount = 12;
         layout.ColumnCount = 1;
 
-        txtName.PlaceholderText = "Название";
         numPrice.Maximum = 1_000_000;
         numPrice.DecimalPlaces = 2;
         numOldPrice.Maximum = 1_000_000;

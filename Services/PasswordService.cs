@@ -7,7 +7,12 @@ public static class PasswordService
 {
     public static string Hash(string password)
     {
-        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(password));
-        return Convert.ToHexString(hash);
+        using (var sha = SHA256.Create())
+        {
+            var hash = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
+            var sb = new StringBuilder(hash.Length * 2);
+            foreach (var b in hash) sb.Append(b.ToString("X2"));
+            return sb.ToString();
+        }
     }
 }

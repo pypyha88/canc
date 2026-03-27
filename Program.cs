@@ -1,4 +1,4 @@
-using System.Text.Json;
+using System.Text.RegularExpressions;
 using StationeryStore.Data;
 using StationeryStore.Forms;
 using StationeryStore.Models;
@@ -7,12 +7,13 @@ namespace StationeryStore;
 
 internal static class Program
 {
-    public static AppConfig Config { get; private set; } = new();
+    public static AppConfig Config { get; private set; } = new AppConfig();
 
     [STAThread]
     private static void Main()
     {
-        ApplicationConfiguration.Initialize();
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
         LoadConfig();
 
         Application.ThreadException += (_, e) =>
@@ -37,6 +38,18 @@ internal static class Program
         }
 
         var json = File.ReadAllText(configPath);
-        Config = JsonSerializer.Deserialize<AppConfig>(json) ?? new AppConfig();
+        var match = Regex.Match(json, "\"DefaultConnection\"\\s*:\\s*\"(?<cs>[^\"]+)\"");
+        if (!match.Success)
+        {
+            throw new InvalidOperationException("Не найдена строка подключения DefaultConnection в appsettings.json");
+        }
+
+        Config = new AppConfig
+        {
+            ConnectionStrings = new ConnectionStrings
+            {
+                DefaultConnection = match.Groups["cs"].Value
+            }
+        };
     }
 }
