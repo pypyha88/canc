@@ -40,7 +40,7 @@ partial class LoginForm
         layout.RowCount = 5;
         layout.ColumnCount = 1;
 
-        lblLogin.Text = "Логин";
+        lblLogin.Text = "Логин (email или телефон)";
         lblPassword.Text = "Пароль";
 
         txtPassword.UseSystemPasswordChar = true;
